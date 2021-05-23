@@ -1,0 +1,76 @@
+<ion-header >
+    <ion-toolbar color = "ourtheme">
+        <ion-title>Add new {{course.name}} lesson</ion-title>
+ <ion-buttons slot="end">
+        <ion-button fill="outline" size="small" slot="end" (click)="close()">
+            <ion-icon color="light" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+   
+</ion-header>
+
+<ion-content>
+<mat-card>
+    <ion-item>
+        <ion-label position="floating">Lesson name </ion-label>
+        <ion-input [(ngModel)]="lessonName" #name type="text" ></ion-input>
+    </ion-item>
+    
+<label id="example-radio-group-label">Pick lesson type</label>
+<mat-radio-group 
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="lessonType">
+  <mat-radio-button  class="example-radio-button" *ngFor="let lesson of lessonTypes" [value]="lesson">
+    {{lesson}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<ion-label position="fixed"> {{lessonType}} Selected</ion-label>
+
+    <ion-list *ngIf="lessonType!='Video'">
+        <ion-item>
+            <ion-button  fill="outline"  shape="round" color="ourtheme" >
+
+                <input type='file' (change)="uploadFile($event)">
+                </ion-button>
+            <!-- <input type='file' (change)="uploadFile($event)"> -->
+            </ion-item>
+        <ion-item>
+            <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+            <ion-progress-bar [value]="(uploadPercentage |async)"></ion-progress-bar>
+            <label [className]="(uploadPercentage |async)"> {{uploadPercentage | async }}%</label>
+        </ion-item>
+        <span id="(uploadPercentage |async)"></span>
+    </ion-list>
+    
+    <ion-button *ngIf="lessonType!='Video'" shape="round" color="warning" expand="block" shape="round" (click)="onClick(name.value)">Upload
+        <mat-icon>file_upload</mat-icon>
+    </ion-button>
+
+<ion-list *ngIf="lessonType=='Video'">
+        <ion-item >
+            <!-- <input type='file' (change)="uploadVideo($event)"> -->
+            <ion-button  fill="outline"  shape="round" color="ourtheme" >
+
+            <input type='file' (change)="uploadVideo($event)">
+            </ion-button>
+
+            <!-- <div> {{ uploadPercentage_V | async }} %</div> -->
+        </ion-item>
+        <ion-item>
+            <a [href]="downloadURL_V | async">{{ downloadURL_V | async }}</a>
+            <ion-progress-bar [value]="(uploadPercentage_V |async)"></ion-progress-bar>
+            <label [className]="(uploadPercentage_V |async)"> {{uploadPercentage_V |async }}%</label>
+        </ion-item>
+        <span id="(uploadPercentage_V |async)"></span>
+    </ion-list>
+
+    <ion-button *ngIf="lessonType=='Video'" shape="round" color="warning" expand="block"  (click)="onClickv(name.value)">Upload
+        <mat-icon>file_upload</mat-icon>
+    </ion-button>
+
+</mat-card>
+
+</ion-content>

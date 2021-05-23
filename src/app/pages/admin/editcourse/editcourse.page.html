@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Course</ion-title>
+    
+    <ion-buttons slot="end">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="close()">
+        <ion-icon size="large" name="close-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="fixed">Course Name</ion-label>
+    <ion-input #coursename type="text" value="{{course.name}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Course Category</ion-label>
+    <ion-select placeholder="Select One" #category value="{{course.category}}">
+      <ion-select-option value="IT">IT</ion-select-option>
+      <ion-select-option value="Finances">Finances</ion-select-option>
+      <ion-select-option value="Photography">Photography</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed" >Course Price</ion-label>
+    <ion-input #price type="number" value="{{course.price}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Course Image</ion-label>
+    <ion-input type="file" accept="jpeg" (change)="uploadFile($event)"></ion-input>
+  </ion-item>
+
+  <ion-button color="dark" expand="block" (click)="updateCourse(coursename.value, category.value, price.value)">Update Course</ion-button>
+
+
+</ion-content>

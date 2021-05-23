@@ -1,0 +1,59 @@
+ion-header {
+    ion-toobar {
+        --background-color: black;
+        --color: #fff;
+    }
+}
+
+.banner {
+    height: 400px;
+    width: 100%;
+    background: black;
+    color: rgb(255, 255, 255);
+    .container {
+        padding: 5px 20px;
+    }
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row {
+    padding-left: 47px;
+    padding-top: 72px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.box {
+    ion-card {
+        width: 70%;
+    }
+    background: rgb(255, 253, 250);
+    padding-left: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+    .column {
+        float: left;
+        width: 100%;
+    }
+    ion-card {
+        width: 100%;
+    }
+    .row {
+        padding-left: 0;
+    }
+    .box {
+        padding-left: 0;
+    }
+}

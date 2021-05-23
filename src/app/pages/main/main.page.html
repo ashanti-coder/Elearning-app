@@ -1,0 +1,192 @@
+
+
+  <mat-spinner  style="position: absolute; z-index: 100;" class="spinner-main" *ngIf="sp.isVisible" ></mat-spinner>
+  <ion-toolbar id="toolbar" color="ourtheme">
+
+    
+        <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+        <img src="../../../assets/img/appicon.jpg">
+      </ion-avatar >
+        <ion-input slot="start" style="width: auto;" (click)="navigateToSearch()"  color="light" style="color: black;" placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
+    
+
+        <ion-buttons  slot="end" >
+          <button  id="search-button" mat-icon-button (click)="navigateToSearch()" >
+            <ion-icon style="font-size: large;" name="search-outline"></ion-icon>
+          </button>
+          
+          <ion-button *ngIf="!loginStatus" color="warning" fill="solid"
+            shape="round"  id="btnsignin"  [matMenuTriggerFor]="signin"
+          aria-label="Example icon button with a vertical three dot icon" >Sign In/Sign Up</ion-button>
+          
+          
+          <mat-menu #signin="matMenu" >
+            <button  mat-menu-item (click)="isStudent = true" routerLink="account">Student</button>
+            
+            
+            <button  mat-menu-item (click)="isStudent = false" [routerLink]="['/sign-in-instructor']" >Instructor</button>
+            <button  mat-menu-item (click)="isStudent = false" routerLink="admin">Admin</button>
+
+           </mat-menu>
+          
+          <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
+            <ion-badge  style="position: absolute; left: 45%; top: 20%; border-radius: 50%; font-size: 2px; z-index: 10; color: red" color="danger" *ngIf="dbs.totalNewAnnouncement > 0">.</ion-badge>
+            <ion-icon color="warning" name="notifications" style="font-size: x-large;"></ion-icon> 
+          </ion-button>
+          
+          <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
+            <img *ngIf="this.accountService.getAccount().getStudent().imgURL" [src]="this.accountService.getAccount().getStudent().imgURL">
+
+            <img *ngIf="!this.accountService.getAccount().getStudent().imgURL" src="../../../assets/img/profile/dp.png">
+
+          </ion-avatar>
+       
+          <button *ngIf ="loginStatus" mat-icon-button (click)="openPopover($event)" aria-label="Example icon button with a vertical three dot icon">
+            <ion-icon size="" name="chevron-down-outline"></ion-icon>
+          </button>
+         
+
+          <button style="margin-right: 10px" id="menu-button" mat-icon-button (click)="closedsidenav.toggle()" >
+            <ion-icon *ngIf="!closedsidenav.opened" size="large" name="menu" color="warning"></ion-icon>
+            <ion-icon *ngIf="closedsidenav.opened" size="large" color="warning"   name="close"></ion-icon>
+
+          </button>
+
+      
+        </ion-buttons> 
+   
+  </ion-toolbar>
+
+
+  <ion-content fullscreen="true"  scroll-events="true" (ionScroll)="test()">
+  
+    
+  
+  <mat-sidenav-container class="example-container" >
+    
+    <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav" >
+      <ion-item color="ourtheme" button="true" routerLink="home" >
+        <mat-icon slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+      </ion-item>
+
+      <ion-item color="ourtheme" button="true"  routerLink="latestcourses">
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true"  routerLink="popularcourses">
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true" routerLink="categories">
+        <mat-icon slot="start">class</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="courseinrolled">
+        <mat-icon slot="start">library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
+      </ion-item>
+
+      <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="quizhistory">
+        <mat-icon slot="start">assignment</mat-icon><ion-label class="pagestabs">Quiz History</ion-label>
+      </ion-item>
+  
+  
+      <ion-item color="ourtheme" button="true" routeroulet routerLink="popularinstructors">
+        <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+      </ion-item>
+  
+
+      
+      <ion-item *ngIf ="loginStatus && isStudent" color="ourtheme"  button="true" routerLink="account">
+        <mat-icon slot="start" >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+      </ion-item>
+      
+      
+  
+      <ion-item color="ourtheme" button="true" routerLink="about">
+        <mat-icon slot="start" >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true" routerLink="contacts">
+        <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+      </ion-item>
+
+
+    </mat-sidenav>
+
+    <!--Side nave that is closed-->
+
+    <mat-sidenav #closedsidenav mode="over" fixedInViewport="true" opened="false" disableClose fixedTopGap="80" id="closedsideNav" style="border-top-right-radius: 25px; background-color: #080110;">
+      <ion-item color="ourtheme" button="true" routerLink="home" (click)="closedsidenav.close()">
+        <mat-icon  slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true"  routerLink="latestcourses" (click)="closedsidenav.close()">
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true"  routerLink="popularcourses" (click)="closedsidenav.close()">
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs" >Popular Courses</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true" routerLink="categories" (click)="closedsidenav.close()">
+        <mat-icon slot="start">class</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="courseinrolled" (click)="closedsidenav.close()">
+        <mat-icon slot="start"> list_alt</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
+      </ion-item>
+      
+      <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="quizhistory" (click)="closedsidenav.close()">
+        <mat-icon slot="start">assignment</mat-icon><ion-label class="pagestabs">Quiz History</ion-label>
+      </ion-item>
+  
+  
+      <ion-item color="ourtheme" button="true" routeroulet routerLink="popularinstructors" (click)="closedsidenav.close()">
+        <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+      </ion-item>
+  
+  
+      
+      <ion-item *ngIf ="loginStatus " color="ourtheme"  button="true" routerLink="account" (click)="closedsidenav.close()">
+        <mat-icon slot="start">person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+      </ion-item>
+      
+  
+      <ion-item color="ourtheme" button="true" routerLink="about" (click)="closedsidenav.close()">
+        <mat-icon slot="start">infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+      </ion-item>
+  
+      <ion-item color="ourtheme" button="true" routerLink="contacts" (click)="closedsidenav.close()">
+        <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" [matMenuTriggerFor]="signin">
+        <mat-icon slot="start">login</mat-icon><ion-label class="pagestabs">Sign in/Sign Up</ion-label>
+      </ion-item>
+    
+    <mat-menu #signin="matMenu" >
+      <button  mat-menu-item (click)="isStudent = true" routerLink="account" (click)="closedsidenav.close()">Student</button>
+      
+      
+      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in-instructor" (click)="closedsidenav.close()">Instructor</button>
+     </mat-menu>
+
+
+
+
+
+      </mat-sidenav>
+    <mat-sidenav-content hasBackdrop="true" id="side-nave-content" >
+      
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>
+
+ 
+</ion-content>
+
+
+  
+  

@@ -1,0 +1,162 @@
+
+<!-- <ion-header id="toolbar" style="background-color: #080110;">
+  <ion-toolbar color="ourtheme">
+    <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+      <img src="../../../../../assets//img/appicon.jpg">
+    </ion-avatar >
+    <ion-buttons slot="end" fill="outline" >
+      <ion-button fill="clear"  color="light" (click)="signOut()">
+        <mat-icon slot="end">logout</mat-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <mat-sidenav-container class="example-container" >
+    
+    <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav">
+      <ion-item button="true" [routerLink]="['/instructorprofile']" color="ourtheme" >
+        <mat-icon slot="start">palette</mat-icon><ion-label class="pagestabs">Profile</ion-label>
+      </ion-item>
+
+      <ion-item button="true" routerLink="student" color="ourtheme">
+        <mat-icon slot="start">school</mat-icon><ion-label class="pagestabs">Students</ion-label>
+      </ion-item>
+
+      <ion-item button="true" routerLink="courses" color="ourtheme">
+        <mat-icon slot="start" slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Courses</ion-label>
+      </ion-item>
+
+      <ion-item button="true" routerLink="events" color="ourtheme">
+        <mat-icon slot="start">notifications</mat-icon><ion-label class="pagestabs">Announcements</ion-label>
+      </ion-item>
+    </mat-sidenav>
+    <mat-sidenav-content style="margin-left: 217px; padding-left: 20px; margin-bottom: 80px;" >
+      
+        <router-outlet></router-outlet>
+  
+  
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>
+</ion-content> -->
+
+
+
+<!-- <mat-spinner  style="position: absolute; z-index: 100;" class="spinner-main" *ngIf="sp.isVisible" ></mat-spinner> -->
+<ion-toolbar id="toolbar" color="ourtheme">
+
+
+  
+    <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+      <img src="../../../assets/img/appicon.jpg">
+    </ion-avatar >
+
+    
+
+      <ion-buttons  slot="end" >
+        
+        <ion-button  color="warning" fill="solid"
+          shape="round"  id="btnsignin" (click)="signOut()"
+        aria-label="Example icon button with a vertical three dot icon" >Sign-Out</ion-button>
+        
+        <ion-button  fill="clear"  id="btnNotification" (click)="navigateToAnnouncement()">
+          <ion-badge  style="position: absolute; left: 45%; top: 20%; border-radius: 50%; font-size: 2px; z-index: 10; color: red" color="danger" *ngIf="dbs.totalNewAnnouncement > 0">.</ion-badge>
+          <ion-icon color="warning" name="notifications" style="font-size: x-large;"></ion-icon> 
+        </ion-button>
+        
+        <ion-avatar style="width: 25px; height: 25px;">
+          <img  src="../../../assets/img/profile/dp.png">
+        </ion-avatar>
+     
+        <!-- <button  mat-icon-button (click)="openPopover($event)" aria-label="Example icon button with a vertical three dot icon">
+          <ion-icon size="" name="chevron-down-outline"></ion-icon>
+        </button> -->
+       
+
+        <button style="margin-right: 10px" id="menu-button" mat-icon-button (click)="closedsidenav.toggle()" >
+          <ion-icon *ngIf="!closedsidenav.opened" size="large" name="menu" color="warning"></ion-icon>
+          <ion-icon *ngIf="closedsidenav.opened" size="large" color="warning"   name="close"></ion-icon>
+
+        </button>
+
+    
+      </ion-buttons> 
+ 
+</ion-toolbar>
+
+
+<ion-content fullscreen="true"  scroll-events="true" >
+
+<mat-sidenav-container class="example-container" >
+  
+  <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav" >
+
+    <ion-item button="true" [routerLink]="['/profile-instructor']" color="ourtheme" >
+      <mat-icon slot="start">palette</mat-icon><ion-label class="pagestabs">Profile</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="student" color="ourtheme">
+      <mat-icon slot="start">school</mat-icon><ion-label class="pagestabs">Students</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="courses" color="ourtheme">
+      <mat-icon slot="start" slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Courses</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="events" color="ourtheme">
+      <mat-icon slot="start">notifications</mat-icon><ion-label class="pagestabs">Announcements</ion-label>
+    </ion-item>
+    <!-- <ion-item button="true"  color="ourtheme" (click)="signOut()">
+      <mat-icon slot="start">logout</mat-icon><ion-label class="pagestabs">Sing-out</ion-label>
+    </ion-item> -->
+
+  </mat-sidenav>
+
+  <!--Side nave that is closed-->
+
+  <mat-sidenav #closedsidenav mode="over" fixedInViewport="true" opened="false" disableClose fixedTopGap="80" id="closedsideNav" style="border-top-right-radius: 25px; background-color: #080110;">
+    <!-- <ion-item color="ourtheme" button="true" routerLink="home" (click)="closedsidenav.close()">
+      <mat-icon  slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+    </ion-item> -->
+
+    <ion-item button="true" [routerLink]="['/profile-instructor']" color="ourtheme" (click)="closedsidenav.close()">
+      <mat-icon slot="start">person</mat-icon><ion-label class="pagestabs">Profile</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="student" color="ourtheme" (click)="closedsidenav.close()">
+      <mat-icon slot="start">school</mat-icon><ion-label class="pagestabs">Students</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="courses" color="ourtheme" (click)="closedsidenav.close()">
+      <mat-icon slot="start" slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Courses</ion-label>
+    </ion-item>
+
+    <ion-item button="true" routerLink="events" color="ourtheme" (click)="closedsidenav.close()">
+      <mat-icon slot="start">notifications</mat-icon><ion-label class="pagestabs">Announcements</ion-label>
+    </ion-item>
+
+    <ion-item button="true"  color="ourtheme" (click)="signOut()">
+      <mat-icon slot="start">logout</mat-icon><ion-label class="pagestabs">Sing-out</ion-label>
+    </ion-item>
+
+
+    <!-- <ion-item *ngIf="!loginStatus" color="ourtheme" [routerLink]="['/sign-in-instructor']" (click)="closedsidenav.close()" button="true" [matMenuTriggerFor]="signin">
+      <mat-icon slot="start">login</mat-icon><ion-label class="pagestabs">Sign in/Sign Up</ion-label>
+    </ion-item> -->
+  
+    </mat-sidenav>
+  <mat-sidenav-content hasBackdrop="true" id="side-nave-content" >
+    
+      <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+</ion-content>
+
+
+
+

@@ -1,0 +1,13 @@
+{
+  "appId": "team.ea.com",
+  "appName": "EA",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quiz Results</ion-title>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+
+
+<div style="margin-bottom: 80px; background-color: white;">
+
+    <ion-card color="dark" >
+    
+      <ion-card-content>
+  
+        <h4>Date: {{date | date}}</h4>
+
+        <ion-label>Duration: {{qs.quiz.duration}} Minutes</ion-label> <br>
+
+        <ion-label>Total Marks: {{qs.quiz.total_marks}}</ion-label> <br>
+
+        <ion-label>Marks obtained: {{totalMarks}}</ion-label> <br>
+
+        <ion-label>Percentage: {{totalMarks / qs.quiz.total_marks * 100}}%</ion-label> <br>
+
+        <ion-label *ngIf="totalMarks / qs.quiz.total_marks * 100 >= 50">Passed</ion-label>
+        
+        <ion-label *ngIf="totalMarks / qs.quiz.total_marks * 100 < 50">Failed</ion-label>
+      </ion-card-content>
+      
+  
+    </ion-card>
+
+  <ion-card *ngFor="let qs of questionResults; let i = index" >
+    
+    <ion-card-content>
+
+      <h4>Question ({{i + 1}}) {{qs.question}}</h4>
+
+      <ion-label>Correct Answer {{qs.answer}}</ion-label> <br>
+      
+      <ion-label>Your Answer {{qs.student_answer}}</ion-label> <br>
+
+      <ion-icon color="success" style="font-size: x-large;" *ngIf="qs.answer == qs.student_answer" name="checkmark-done-outline"></ion-icon>
+      
+      <ion-icon color="danger" style="font-size: x-large;" *ngIf="qs.answer != qs.student_answer" name="close-outline"></ion-icon>
+
+    </ion-card-content>
+    
+
+  </ion-card>
+
+</div>
+

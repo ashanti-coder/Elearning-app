@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Announcement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div style="background-color: white;">
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel *ngFor="let studentA of studentAnnouncement">
+      <mat-expansion-panel-header (click)="view(studentA)">
+        <mat-panel-title  style=" width: 150px;" >
+          {{studentA.subject}}
+        </mat-panel-title>
+        <mat-panel-description >
+          {{studentA.date | date:'medium'}}
+          
+        </mat-panel-description>
+        <ion-badge slot="end" color="success" style="margin-right: 10px;" *ngIf="!studentA.viewed ">New</ion-badge>
+    </mat-expansion-panel-header>
+
+    <ion-textarea #ann readonly [value]="studentA.message" style="color: rgb(0, 0, 0, .5);"></ion-textarea>
+    </mat-expansion-panel>
+    
+  </mat-accordion>
+  
+
+</div>

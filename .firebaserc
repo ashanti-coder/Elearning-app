@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "elearningapp-ad47e": {
+      "hosting": {
+        "app": [
+          "elearningapp-ad47e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "elearningapp-ad47e"
+  }
+}

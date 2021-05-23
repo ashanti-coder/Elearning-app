@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="adminpanel"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Announcements</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-label>{{totalMartks}}</ion-label>
+      <ion-button color="dark" fill="solid" (click)="createAnnouncement()">New Announcement</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<div style="background-color: white; padding-left: 10px; margin-bottom: 80px;">
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Instructors">
+
+      <ion-card *ngFor="let instructorA of instructorsAnnouncements">
+        <ion-card-header>
+          <ion-card-title>{{instructorA.subject}}</ion-card-title>
+          <ion-card-subtitle>{{instructorA.date | date}}</ion-card-subtitle>
+          
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-textarea autoGrow="true"  #ann disabled [value]="instructorA.message"></ion-textarea>
+          <div>
+          <ion-button  (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+          <ion-button color="success" (click)="save(ann, instructorA.id)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+            </div>
+        </ion-card-content>
+      </ion-card>
+
+    </mat-tab>
+    <mat-tab label="Students">
+      
+
+      <ion-card *ngFor="let studentsA of studentsAnnouncements">
+        <ion-card-header>
+          <ion-card-title>{{studentsA.subject}}</ion-card-title>
+          <ion-card-subtitle>{{studentsA.date | date}}</ion-card-subtitle>
+          
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-textarea autoGrow="true" #anns disabled [value]="studentsA.message"></ion-textarea>
+          <div>
+          <ion-button  (click)="enable(anns)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+          <ion-button color="success" (click)="save(anns, studentsA.id)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+            </div>
+        </ion-card-content>
+      </ion-card>
+    </mat-tab>
+  
+  </mat-tab-group>
+
+
+</div>
+
+  
+

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Instructor</ion-title>
+
+    <ion-buttons slot="end">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="close()">
+        <ion-icon size="large" name="close-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>First Name</ion-label>
+    <ion-input #fname type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Last Name</ion-label>
+    <ion-input #lname type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label >Gender</ion-label>
+    <ion-select #gender >
+      <ion-select-option  value="female">Female</ion-select-option>
+      <ion-select-option value="male">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Phone Number</ion-label>
+    <ion-input #phone type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input #email type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input #password type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Confirm Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+  <ion-button fill="solid" expand="block" color="dark" (click)="addInstructor(fname.value, lname.value, gender.value, phone.value, email.value, password.value)">Add Instructor</ion-button>
+
+</ion-content>

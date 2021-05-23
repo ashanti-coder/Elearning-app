@@ -1,0 +1,35 @@
+<!-- 
+<ion-header class="ion-no-border">
+
+  <ion-toolbar color="ourtheme">
+  
+  </ion-toolbar>
+</ion-header> -->
+
+
+<mat-tab-group *ngIf ="!loggedIn"  mat-align-tabs="center" mat-stretch-tabs selectedIndex="0">
+  <mat-tab  >
+    <ng-template mat-tab-label >
+      <ion-icon name="log-in" size="large" class="ion-margin"></ion-icon>
+       <b>SIGN IN</b>
+    </ng-template>
+      <app-login></app-login>
+  </mat-tab>
+  <mat-tab > 
+    <ng-template mat-tab-label>
+      <ion-icon name="person-add" size="large" class="ion-margin"></ion-icon>
+       <b>SIGN UP</b>
+    </ng-template>
+    <app-signup></app-signup>
+  </mat-tab>
+</mat-tab-group>
+<div *ngIf ="loggedIn">
+  <app-my-profile></app-my-profile>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="ourtheme">
+    <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+      <img src="../../../../../assets//img/appicon.jpg">
+    </ion-avatar >
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/instructorpanel']">Dashboard</ion-button>
+    </ion-buttons>
+
+    
+    <ion-buttons slot="end" fill="outline" >
+      <ion-button fill="clear" (click)="signOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content"  >
+
+  <mat-spinner style="position: absolute;" class="spinner" *ngIf="isVisible" ></mat-spinner>
+
+  <div color ="ourtheme">
+   
+
+    
+    
+    <ion-row class="user-details-wrapper" *ngIf="!isEdit">
+        
+    <ion-col size="6" class="user-image-wrapper">
+      <ion-avatar   style="height: 200px; width: 200px; margin: auto;">
+        <img  shape ="round"(click)="uploadPhoto($event)" class="user-image" [src]="user.imageURL">
+      </ion-avatar>
+    </ion-col>
+    <ion-col class="user-info-wrapper" size="12">
+      <ion-list no-lines>
+              
+        
+      <ion-item class="user-info-wrapper">
+        <ion-icon size="medium" name ="person"></ion-icon> <ion-label> {{user.name}} {{user.surname}}</ion-label>
+        <ion-buttons slot="end" *ngIf="!isEdit">
+          <ion-button  color="warning" size="small" (click)="isEdit = true"><ion-icon size="large" name="create-outline"></ion-icon></ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item class="user-info-wrapper">
+        <ion-icon size="medium" name ="mail"></ion-icon>  
+        <ion-label>
+          {{user.boi}}
+        </ion-label>
+      </ion-item>
+      
+
+      <ion-item class="user-info-wrapper">
+        <ion-icon size="medium" name ="mail"></ion-icon> <ion-label> {{user.email}}</ion-label>
+      </ion-item>
+      <ion-item class="user-info-wrapper">
+        <ion-icon size="medium" name ="call"></ion-icon> <ion-label> {{user.phone}}</ion-label>
+      </ion-item>
+      <ion-item class="user-info-wrapper">
+        <ion-icon size="medium" name ="location"></ion-icon> <ion-label><p>  {{user.address}}</p></ion-label>
+      
+      </ion-item>
+
+    </ion-list>
+
+    </ion-col>
+  </ion-row>
+  
+  <ion-row class="user-details-wrapper" *ngIf="isEdit">
+
+    <ion-col size="6" class="user-image-wrapper">
+      <ion-avatar   style="height: 200px; width: 200px; margin: auto;">
+      <img  shape ="round"(click)="uploadPhoto($event)" class="user-image" [src]="user.imageURL">
+    </ion-avatar>
+      </ion-col>
+    <ion-col class="user-info-wrapper" size="12">
+      <ion-list class="user-info-wrapper">
+
+        <!-- <form [formGroup]="nameForm" (ngSubmit)="updatedState()">
+          <ion-list class="inputs-list" lines="full">
+            <ion-item class="ion-margin login-input" >
+              <ion-label position="stacked" >Email Address</ion-label>
+              <ion-input #name type="name" placeholder="you@example.com" formControlName="name" clearInput autocapitalize="off" inputmode="email"></ion-input>
+            </ion-item>
+            <div class="error-container" >
+              <ng-container *ngFor="let validation of validation_messages.name">
+                <div class="error-message" *ngIf="nameForm.get('name').hasError(validation.type) && (nameForm.get('name').dirty || nameForm.get('name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+            <ion-button color="warning" type="submit" [disabled]="nameForm.valid" (click) = "updatedState()">update</ion-button>
+            </form>
+           -->
+        
+          <ion-item class="user-info-wrapper" (click) = "updateState('name')" *ngIf="editfield !='name';">First Name:  {{user.name}}</ion-item>
+          <ion-item  class="ion-margin login-input" *ngIf="editfield =='name';">
+            <ion-label floating>Name: </ion-label>
+            <ion-input type="text" placeholder="{{user.name}}"  [(ngModel)]="user.name" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="editfield =='name'" class="user-info-wrapper">            
+          <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+          <ion-item class="user-info-wrapper"  (click) = "updateState('surname')" *ngIf="editfield !='surname';">Surname:  {{user.surname}}</ion-item>
+          <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='surname';">
+            Surname:   
+            <ion-input type="text" placeholder="{{user.surname}}" [(ngModel)]="user.surname" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="editfield =='surname'">            
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+          
+          <ion-item class="user-info-wrapper" (click) = "updateState('phone')" *ngIf="editfield !='phone';"> Phone:  {{user.phone}}</ion-item>
+          <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='phone';">
+            Phone:   
+            <ion-input type="text" placeholder="{{user.phone}}" [(ngModel)]="user.phone" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="editfield =='phone'">            
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
+          </ion-item>
+          
+          <ion-item class="user-info-wrapper" (click) = "updateState('address')" *ngIf="editfield !='address';"> Address:  {{user.address}}</ion-item>
+          <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='address';">
+            Address:   
+            <ion-input type="text" placeholder="{{user.address}}" [(ngModel)]="user.address" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="editfield =='address'">            
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
+          </ion-item>
+          <ion-item class="user-info-wrapper" (click) = "updateState('boi')" *ngIf="editfield !='boi';"> Bio:  {{user.boi}}</ion-item>
+          <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='boi';">
+            Bio:   
+            <ion-input type="text" placeholder="{{user.boi}}" [(ngModel)]="user.boi" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="editfield =='boi'">            
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+
+
+
+
+      </ion-list>
+      <ion-button color="dark" expand = "block" (click)="isEdit = false">Cancel</ion-button>
+      <ion-button color="warning" expand = "block" (click)="isEdit = false">Update</ion-button>
+    </ion-col>
+  </ion-row>
+
+  </div>
+</ion-content>
+
+

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>Ionic App</title>
+
+  <base href="/"/>
+
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="msapplication-tap-highlight" content="no"/>
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png"/>
+<!--forum-->
+  <script language="JavaScript" type="text/javascript" src="assets/js/forum.js"></script>
+  <script language="JavaScript" type="text/javascript" src="assets/js/quizDb.js"></script>
+  <script language="JavaScript" type="text/javascript" src="assets/js/htmlQ.js"></script>
+
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+     <!-- <script src="/__/firebase/8.2.1/firebase-app.js"></script> -->
+
+     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+     <!-- <script src="/__/firebase/8.2.1/firebase-analytics.js"></script> -->
+   
+     <!-- Add Firebase products that you want to use -->
+     <!-- <script src="/__/firebase/8.2.1/firebase-auth.js"></script>
+     <script src="/__/firebase/8.2.1/firebase-firestore.js"></script>
+     <script src="/__/firebase/8.2.1/firebase-database.js"></script> -->
+ 
+  <style type="text/css">
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+
+    #sideNav{
+      /* margin-top: 80px; */
+      width: 240px;
+      height: 100%;
+      background-color: #080110;
+
+    }
+
+    #searchbar{
+        width: 200.4%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 12%;
+        margin-right: 10px;
+        border: 1px solid;
+      }
+
+      /*For smart phone*/
+    @media screen and (min-width: 250px){
+      
+
+      #featured-courses, #latest-courses, #icourse-card{
+        margin-right: 0px;
+  
+        overflow: auto;
+        padding: 10px;
+      }
+
+      #icourse-card{
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .fcourse-card, .lcourse-card{
+        width: 100%;
+        margin: 1px;
+      
+      }
+
+      table {
+      width: 100%;
+      margin: auto;
+      }
+
+      #main-content{
+        width: 100%;
+        padding-left: 0px;
+        margin: 0px;
+        padding-right: 0px;
+      }
+
+      #latest-courses{
+        
+      }
+
+
+      .course-status{
+        top: 64%;
+      }
+
+      .lcourse-status{
+        top: 64%;
+      }
+
+      .student-table{
+        margin: 0px;
+        outline: 1px solid;
+        width: 95%;
+      }
+
+      .enrcourse-header{
+        display: none;
+      }
+
+      .spinner{
+        top: 30%; 
+        left: 35%;
+      }
+
+      .spinner-main{
+        top: 40%; 
+        left: 35%;
+      }
+    }
+    
+    @media screen and (min-width: 381px){
+      
+     
+      #featured-courses, #latest-courses{
+        margin-right: 0px;
+  
+        overflow: auto;
+        padding: 20px;
+      }
+
+      .fcourse-card, .lcourse-card{
+        width: 100%;
+        margin: 1px;
+      }
+
+      #main-content{
+        width: 100%;
+        padding-left: 0px;
+        margin: 0px;
+        padding-right: 0px;
+
+        
+      }
+
+      table {
+          width: 100%;
+          margin: auto;
+        }
+
+      #latest-courses{
+        
+      }
+
+      .course-status{
+        top: 65%;
+      }
+
+      .lcourse-status{
+        top: 65%;
+      }
+
+     
+    }
+
+
+    @media screen and (min-width: 383px){
+      .course-status{
+        top: 65%;
+      }
+
+      .lcourse-status{
+        top: 65%;
+      }
+    }
+
+    @media screen and (min-width: 435px){
+      .course-status{
+        top: 68%;
+      }
+
+      .lcourse-status{
+        top: 68%;
+      }
+
+      .spinner{
+        top: 30%; 
+        left: 38%;
+      }
+
+      .spinner-main{
+        top: 40%; 
+        left: 40%;
+      }
+    }
+
+    /*For spinner*/
+
+    @media screen and (min-width: 700px) {
+
+      .spinner-main{
+        top: 43%; 
+        left: 40%;
+      }
+      
+    }
+
+    @media screen and (min-width: 448px){
+      .course-status{
+        top: 73%;
+      }
+
+      .lcourse-status{
+        top: 73%;
+      }
+    }
+
+    @media screen and (min-width: 450px){
+      .course-status{
+        top: 71%;
+      }
+
+      .lcourse-status{
+        top: 71%;
+      }
+    }
+
+    @media screen and (max-width: 545px){
+      
+      #searchbar{
+        display: none;
+      }
+
+      .spinner{
+        top: 30%; 
+        left: 40%;
+      }
+
+    
+    }
+
+
+
+    @media screen and (min-width: 545px){
+      
+      #search-button{
+        display: none;
+      }
+    }
+
+
+    
+
+
+
+    
+    @media screen and (min-width: 800px) {
+        #menu-button{
+          display: none;
+        }
+
+        table {
+          width: 85%;
+          margin: auto;
+        }
+
+        #side-nave-content{
+        
+          margin-left: 237px;
+        }
+
+        .spinner-main{
+          top: 47%; 
+          left: 56%;
+        }
+    }
+
+    @media screen and (max-width: 775px ) {
+      #searchbar{
+        width: 200.4%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 15%;
+        margin-right: 10px;
+        border: 1px solid;
+      }
+
+      
+
+      
+    }
+
+    
+    @media screen and (max-width: 800px) {
+        #btnsignin, #sideNav, #image-cover{
+          display: none;
+        }
+
+        #side-nave-content{
+          margin-left: 0px;
+        }
+
+
+    }
+
+    .image-cover{
+        position: absolute; 
+        width: 100%; 
+        height: 0px; 
+        background-color: transparent; 
+        top: 0%;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+      }
+
+    /*For login page*/
+    @media screen and (max-width: 600px) {
+       #login-container{
+          width: 100%;
+          text-align: center; 
+          background-color: white; 
+          padding-top: 5px; 
+          padding-bottom: 10px;
+          border-radius: 20px; 
+       }
+
+
+    }
+
+    @media screen and (min-width: 601px) {
+       #login-container{
+          width: 75%;
+          margin: auto; 
+          text-align: center; 
+          background-color: white; 
+          margin-top: 40px; 
+          padding-top: 5px; 
+          padding-bottom: 50px; 
+          margin-bottom: 100px; 
+          border-radius: 20px; 
+       }
+
+       
+      .spinner{
+        top: 37%; 
+        left: 43%; 
+      }
+
+
+    }
+
+    @media screen and (min-width: 801px) {
+       #login-container{
+          width: 55%;
+          margin: auto; 
+          text-align: center; 
+          background-color: white; 
+          margin-top: 40px; 
+          padding-top: 5px; 
+          padding-bottom: 50px; 
+          margin-bottom: 100px; 
+          border-radius: 20px; 
+       }
+
+       .spinner{
+        top: 41%; 
+        left: 40%; 
+      }
+
+    }
+
+    /*For cards*/
+    @media screen and (min-width: 550px) {
+      .fcourse-card, .lcourse-card{
+        width: 220px;
+        margin: 8px;
+        float: left;
+        height: 270px;
+        border-radius: 40px;
+      
+      } 
+
+      .instructor{
+        width: 220px;
+        margin: 8px;
+        float: left;
+        height: 330px;
+        border-radius: 40px;
+      
+      } 
+
+      .course-status{
+        top: 46%;
+      }
+
+      .lcourse-status{
+        top: 46%;
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      .fcourse-card{
+        width: 250px;
+        margin: 5px;
+        float: left;
+        height: 290px;
+        border-radius: 40px;
+      
+      } 
+
+      .lcourse-card{
+        width: 270px;
+        margin: 5px;
+        float: left;
+        height: 290px;
+        border-radius: 40px;
+      
+      } 
+
+      #main-content{
+        width: 80%;
+    
+      }
+      
+      #main-content-latest{
+        width: 100%;
+      }
+
+      .course-status{
+        top: 52%;
+      }
+     
+
+      .lcourse-status{
+        top: 55%;
+      }
+
+      .spinner{
+        top: 37%; 
+        left: 40%; 
+      }
+
+    }
+
+
+    @media screen and (max-width: 899px) {
+      #new-aside{
+        display: none;
+      }
+    }
+
+
+
+    #toolbar{
+      height: 80px;
+      padding-top: 10px;
+    }
+
+    #searchicon{
+      margin-left: 20px;
+    }
+
+    #brand{
+      font-weight: bold;
+      margin-left: 35px;
+      font-size: 150%;
+      line-height: 40px;
+    }
+
+    #btnsignin, #btnNotification{
+      height: 43px;
+    }
+
+
+    .tabs{
+      text-align: left;
+    }
+
+    .pagestabs{
+      font-weight: 500;
+      margin-left: 5px;
+    }
+
+    .courses{
+       padding: 0%;
+    }
+
+    .courses-header{
+      outline: 1px solid ;
+    }
+
+    .instructor{
+      color: lightcoral;
+    }
+
+   
+
+    .lcourse-card:hover , .fcourse-card:hover{
+      border: 1px solid #ffd534;
+      transition-property: border;
+      transition-duration: 0.5s;
+    }
+
+    .pcourse-card{
+      width: 265px;
+      margin: 7px;
+      float: left;
+      height: 290px;
+      
+    }
+
+
+    .fcourse-im{
+      margin: auto;
+      
+    }
+
+    .prices{
+      margin-left: 120px;
+      margin-right: 5px;
+      font-weight: bold;
+    }
+
+    .subheaders{
+      margin-left: 15px;
+      margin-left: 0px; 
+      margin-top: 10px; 
+      color: #080110;
+    }
+
+    .summary-link{
+      margin-right: 10px; 
+      text-decoration: none; 
+      color: #ffd534
+    }
+
+    .fcol{
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .example-sidenav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 185px;
+      background: rgba(255, 0, 0, 0.5);
+    }
+
+    .example-container {
+      position: absolute;
+      top: 0px;
+      bottom: 60px;
+      left: 50;
+      right: 0;
+    }
+
+ 
+    .category{
+      background-color: transparent;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+
+    .profile-card{
+      
+    }
+
+    .card-slide{
+      height: fit-content;
+    }
+
+    .social{
+      font-size: x-large;
+      margin: 2px;
+    }
+
+    #stepper{
+      padding-bottom: 50px;
+    }
+
+    .aside-subheaders{
+      border-bottom: 3px solid #ffd534;
+    }
+
+    .popular-links, .categories-links{
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: medium;
+      line-height: 30px;
+      font-weight: 500;
+    }
+
+    .popular-links:hover, .categories-links:hover{
+      color: #ffd534;
+      transition-property: color;
+      transition-duration: .3s;
+    }
+
+    .categories-aside, .popular-aside{
+      background-color: rgba(255, 255, 255, .9);
+      width: 220px;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .categories-aside, .popular-aside{
+      padding-top: 5px;
+    }
+
+    .student-card{
+      width: 415px;
+      height: 200px;
+    }
+
+    .course-link{
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .course-curriculum{
+      width: 20px; 
+      height: 20px; 
+      padding-top: 1px; 
+      margin: 5px; 
+      margin-top: 0px;
+      text-align: center; 
+      background-color:black; 
+      border-radius: 50%;
+      color: white;
+    }
+
+    .progress-ratings{
+      margin-top: 8px;
+    }
+
+    .rating-percentage{
+      margin-left: 10px; font-size: 105%;
+    }
+
+    .thumbs{
+      margin-left: 10px;
+      font-size: larger ;
+    }
+
+  
+
+    .mat-form-field {
+      font-size: 14px;
+      width: 85%;
+      margin-left: 100px;
+    }
+
+    #btnNotification{
+      margin-right: 15px;
+      padding: 2px;
+      width: 50px;
+    }
+
+    .image-cover:hover{
+      background-color: rgba(255, 213, 52, .5);
+    }
+
+    .course-status, .lcourse-status{
+      position: absolute; 
+      z-index: 10; 
+      left: 0%; 
+      background-color: #ffd534; 
+      color: black; 
+      border-top-right-radius: 15px; 
+      border-bottom-right-radius: 15px; 
+      padding: 4px; padding-right: 6px;
+    }
+
+    .login-input{
+      border-radius: 90px; 
+      border: 1px solid #08011013; 
+      transition-property: border;
+      transition-duration: .3s;
+    }
+
+    .login-input:hover{
+      border: 2px solid rgba(255, 214, 52, 0.774); 
+    }
+
+    .login-input:focus-within{
+      border: 2px solid rgba(255, 214, 52, 0.767); 
+    }
+
+    .quotes{
+      color: #ffd534;
+      font-size: xx-large;
+    }
+
+    .tab:focus{
+      background-color: #ffd534;
+    }
+
+    .instructor{
+      margin-top: 10px;
+    }
+
+    .spinner{
+      z-index: 100;
+    }
+
+  </style> 
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+</head>
+
+<body class="mat-typography">
+  <app-root></app-root>
+  
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar style="line-height: 40px;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="adminpanel"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Courses</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="dark" (click)="addCourse()">
+        Add Course
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div style="background-color: white; margin-bottom: 80px;">
+
+  <mat-form-field style="margin-left: 30px; margin-top: 10px;">
+    <mat-label>Filter</mat-label>
+    <input matInput  placeholder="Search course by id,  name or category" #input (keyup)="filter(input.value)">
+  </mat-form-field>
+
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 90px;"></mat-paginator>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef > Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberStudentsErrolled" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No Students Enrolled </th>
+      <td mat-cell *matCellDef="let element"> {{element.numberStudentsErrolled}} <ion-button (click)="navigateToCourseStudents(element.id, element.name)" style="margin-left: 10px;" color="secondary" class="popular-links">View More</ion-button> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element"> 
+        
+        <button mat-icon-button (click)="editCourse(element.id)" aria-label="Example icon button with a vertical three dot icon">
+          <ion-icon size="large" color="success" name="create-outline"></ion-icon>
+        </button>
+
+        <button (click)="deleteCourse(element.id)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+          <ion-icon name="trash-outline" size="large" color="danger"></ion-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+
+</div>

@@ -1,0 +1,60 @@
+<ion-header style="position: fixed;">
+    <ion-toolbar>
+        <ion-title>Quiz</ion-title>
+
+        <ion-buttons slot="end" style=" width: 60%;" *ngIf="isStarted">
+            <ion-label slot="start"><span style="font-size: 25px; margin-left: 10px;"> &nbsp;{{displayTime}}</span></ion-label>
+            <ion-label slot="end" style="margin-right: 50px; font-size: larger; margin-left: 290px;">Total Marks {{quiz.total_marks}}</ion-label>
+
+
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<div *ngIf="!isQuizAvailable" style="height: 400px;">
+    <h2 style="color: gray; text-align: center; margin-top: 200px;">No Quiz uploaded for this lesson</h2>
+</div>
+
+
+<div style="background-color: white; padding-top: 60px;" *ngIf="isQuizAvailable">
+
+    <ion-card color="dark" *ngIf="!isStarted">
+
+        <ion-card-content>
+
+            <h4>Date: {{date | date}}</h4>
+            <ion-label>Total Marks: {{quiz.total_marks}}</ion-label> <br>
+
+            <ion-label>Duration: {{quiz.duration}} Minutes</ion-label> <br>
+
+
+
+            <ion-button shape="round" slot="end" size="large" color="success" fill="solid" (click)="start()">START QUIZ</ion-button>
+
+        </ion-card-content>
+
+
+    </ion-card>
+
+    <div style=" width: 900px; margin: auto; margin-bottom: 80px;" *ngIf="isStarted">
+
+
+        <ion-card *ngFor="let question of quiz.questions; let x = index " style="margin-top: 10px;">
+            <ion-card-content>
+                <h3>({{question.qno}}) {{question.question}} ({{question.marks}} Marks) </h3>
+                <ion-radio-group >
+                    <ion-item  *ngFor="let option of question.options; let i = index">
+                        <ion-label>{{option}}</ion-label>
+                        <ion-radio color="ourtheme" #answer  (click)="save(question, answer.value, question.qno)" slot="start" [value]="option"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+
+            </ion-card-content>
+        </ion-card>
+
+        <ion-button slot="end" class="ion-margin" (click)="done()" color="success">Done</ion-button>
+
+
+    </div>
+
+</div>

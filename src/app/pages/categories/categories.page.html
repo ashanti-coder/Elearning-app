@@ -1,0 +1,168 @@
+<div>
+
+  <section id="main-content-latest">
+
+    <section id="latest-courses"> 
+
+      <ion-item-divider class="category">
+        <h2 class="subheaders">Information Technology</h2>
+      </ion-item-divider>
+
+            <div *ngFor="let course of categories;index as i" >
+              <mat-card class="fcourse-card" style=" padding: 0px;" *ngIf="course.category===iT"
+                [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+                <div class="image-cover"></div>
+                <img style="margin: auto;" mat-card-image [src]="course.imgURL">
+
+                <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+                <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
+    
+                <mat-card-content style="margin: 10px;">
+                  <a   class="course-link">Learn {{course.name}}</a>
+                  <p>{{course.category}}</p>
+                
+                    <ion-row>
+                      <ion-col size-sm ="9" size-md ="8" size-xs ="9" size-lg ="7" size-xl="7"> 
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                      </ion-col>
+              
+                          <ion-col size-sm ="3" size-md ="4" size-xs ="3" size-lg ="5" size-xl="5" class="ion-align-self-end">
+                          <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                        </ion-col>
+                    </ion-row>
+                    
+                    
+                </mat-card-content>
+                
+              </mat-card>
+            </div>
+
+            <br>
+
+            <ion-item-divider class="category">
+              <h2 class="subheaders" style="margin-top: 20px;">Business Management</h2>
+            </ion-item-divider>
+
+            <div *ngFor="let course of categories;index as i" >
+              <mat-card class="fcourse-card" style=" padding: 0px;" *ngIf="course.category===bM"
+                [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+                <div class="image-cover"></div>
+                <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+                <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+                <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
+    
+                <mat-card-content style="margin: 10px;">
+                  <a   class="course-link">Learn {{course.name}}</a>
+                  <p>{{course.category}}</p>
+                
+                    <ion-row>
+                      <ion-col size-sm ="9" size-md ="8" size-xs ="9" size-lg ="7" size-xl="7"> 
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                      </ion-col>
+              
+                          <ion-col  size-sm ="3" size-md ="4" size-xs ="3" size-lg ="5" size-xl="5" class="ion-align-self-end">
+                          <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                        </ion-col>
+                    </ion-row>
+                    
+                    
+                </mat-card-content>
+                
+              </mat-card>
+            </div>
+
+            <br>
+            
+            <ion-item-divider class="category">
+              <h2 class="subheaders"  style="margin-top: 20px;">Photography</h2>
+            </ion-item-divider>
+
+            <div *ngFor="let course of categories;index as i" >
+              <mat-card class="fcourse-card" style=" padding: 0px;" *ngIf="course.category===py"
+                [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+                <div class="image-cover"></div>
+                <img style="margin: auto;" mat-card-image [src]="course.imgURL">
+                <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+                <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
+    
+                <mat-card-content style="margin: 10px;">
+                  <a   class="course-link">Learn {{course.name}}</a>
+                  <p>{{course.category}}</p>
+                
+                    <ion-row>
+                      <ion-col size-sm ="9" size-md ="8" size-xs ="9" size-lg ="7" size-xl="7"> 
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                      </ion-col>
+              
+                          <ion-col    size-sm ="3" size-md ="4" size-xs ="3" size-lg ="5" size-xl="5" class="ion-align-self-end">
+                          <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                        </ion-col>
+                    </ion-row>
+                    
+                    
+                </mat-card-content>
+                
+              </mat-card>
+            </div>
+
+            <br>
+            
+            <ion-item-divider class="category" >
+              <h2 class="subheaders" style="margin-top: 20px;">Finances</h2>
+            </ion-item-divider>
+
+            <div *ngFor="let course of categories;index as i" >
+              <mat-card class="fcourse-card" style=" padding: 0px;" *ngIf="course.category===fi"
+                [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+                
+                <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+                <div class="image-cover"></div>
+                <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+                <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
+                
+                <mat-card-content style="margin: 10px;">
+                  <a   class="course-link">Learn {{course.name}}</a>
+                  <p>{{course.category}}</p>
+                
+                    <ion-row>
+                      <ion-col size-sm ="9" size-md ="8" size-xs ="9" size-lg ="7" size-xl="7"> 
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                        <ion-icon color="warning" name="star-outline"></ion-icon>
+                      </ion-col>
+              
+                          <ion-col   size-sm ="3" size-md ="4" size-xs ="3" size-lg ="5" size-xl="5" class="ion-align-self-end">
+                          <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                        </ion-col>
+                    </ion-row>
+                    
+                    
+                </mat-card-content>
+                
+              </mat-card>
+            </div>
+            
+
+</section>
+
+</section>
+
+</div>
+
+
+    
+   

@@ -1,0 +1,278 @@
+.error-message{
+  color: red;
+}
+
+
+.account-container{
+  ion-segment-button {
+    --background-checked:black;
+    --background:gray;
+    --indicator-color:none;
+    ion-label{
+      color: #fff;
+    }
+  }
+    background: #010100;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    ion-row{
+        height: 20px;
+       ion-col{
+        font-size: 25px;
+        font-weight: bold;
+       }
+    }
+.login{
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-weight: 700;
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 15%;
+    }
+
+    img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      border: 8px solid #ffffff;
+    }
+  }
+}
+    .sign-up{
+
+      h1 {
+        padding-left: 35px;
+        font-weight: 700;
+        font-size: 26px;
+        color: #ffffff;
+        margin-bottom: 15%;
+      }
+    
+      p {
+        text-align: center;
+        color: #b6b6b6;
+        margin-top: 40px;
+      }
+    }
+   
+    
+      #form {
+        margin-top: 5%;
+        padding-left: 30px;
+        padding-right: 30px;
+    
+        ion-button {
+          margin-top: 35px;
+          height: 48px;
+          font-size: 18px;
+          text-transform: initial;
+          border-radius: 50px;
+          box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+          --box-shadow: none;
+        }
+      }
+}
+    
+    
+.sign-in-content {
+  text-align: center;
+  --padding-bottom: 16px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  --padding-top: 16px;
+
+  .auth-title {
+    font-weight: bold;
+    margin-bottom: 64px;
+    letter-spacing: 0.6px;
+  }
+
+  .social-auth-options {
+    .options-divider {
+  		text-align: center;
+    }
+  }
+
+  .inputs-list {
+    .input-item {
+      --padding-start: 0px;
+      --padding-end: 0px;
+      --inner-padding-end: 0px;
+    }
+  }
+
+  .error-container {
+    .error-message {
+      margin: 16px 0px;
+      display: flex;
+      align-items: center;
+      color: var(--ion-color-danger);
+      font-size: 14px;
+
+      ion-icon {
+        font-size: 16px;
+        padding-inline-end: 8px;
+      }
+    }
+  }
+
+  .sign-in-btn {
+    margin: 16px 0px;
+  }
+
+  .sign-up-btn-wrapper {
+    justify-content: flex-end;
+    align-items: center;
+
+    .sign-up-btn {
+      --padding-end: 0px;
+    }
+  }
+}
+
+
+.error-message{
+  color: red;
+}
+
+
+.account-container{
+  ion-segment-button {
+    --background-checked:black;
+    --background:gray;
+    --indicator-color:none;
+    ion-label{
+      color: #fff;
+    }
+  }
+    background: #010100;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    ion-row{
+        height: 20px;
+       ion-col{
+        font-size: 25px;
+        font-weight: bold;
+       }
+    }
+.login{
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-weight: 700;
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 15%;
+    }
+
+    img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      border: 8px solid #ffffff;
+    }
+  }
+}
+    .sign-up{
+
+      h1 {
+        padding-left: 35px;
+        font-weight: 700;
+        font-size: 26px;
+        color: #ffffff;
+        margin-bottom: 15%;
+      }
+    
+      p {
+        text-align: center;
+        color: #b6b6b6;
+        margin-top: 40px;
+      }
+    }
+   
+    
+      #form {
+        margin-top: 5%;
+        padding-left: 30px;
+        padding-right: 30px;
+    
+        ion-button {
+          margin-top: 35px;
+          height: 48px;
+          font-size: 18px;
+          text-transform: initial;
+          border-radius: 50px;
+          box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+          --box-shadow: none;
+        }
+      }
+}
+    
+    
+.sign-up-content {
+  text-align: center;
+  --padding-bottom: 16px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  --padding-top: 16px;
+
+  .auth-title {
+    font-weight: bold;
+    margin-bottom: 64px;
+    letter-spacing: 0.6px;
+  }
+
+  .social-auth-options {
+    .options-divider {
+  		text-align: center;
+    }
+  }
+
+  .inputs-list {
+    .input-item {
+      --padding-start: 0px;
+      --padding-end: 0px;
+      --inner-padding-end: 0px;
+    }
+  }
+
+  .error-container {
+    .error-message {
+      margin: 16px 0px;
+      display: flex;
+      align-items: center;
+      color: var(--ion-color-danger);
+      font-size: 14px;
+
+      ion-icon {
+        font-size: 16px;
+        padding-inline-end: 8px;
+      }
+    }
+  }
+
+  .sign-up-btn {
+    margin: 16px 0px;
+  }
+
+  .sign-in-btn-wrapper {
+    justify-content: flex-end;
+    align-items: center;
+
+    .sign-in-btn {
+      --padding-end: 0px;
+    }
+  }
+}

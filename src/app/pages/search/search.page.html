@@ -1,0 +1,61 @@
+<ion-header class="hearder" >
+  <ion-toolbar >
+    <ion-input  #course placeholder="Search course by name" style=" border: 1px solid rgba(0, 0, 0, .1); border-radius: 20px; width: 90%; margin:  auto;" (keyup)="searchCourse(course.value)" clear-input="true">
+      <ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon>
+    </ion-input>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <section id="main-content-latest" style="margin-bottom: 40px;">
+
+    <section id="latest-courses"> 
+
+        <div *ngFor="let course of tempvar;" >
+          <mat-card class="fcourse-card" style=" padding: 0px;" (click) ="selectCourse(course)">
+            <div class="image-cover"></div>
+            <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+            <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+            <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
+
+            <mat-card-content style="margin: 10px;">
+              <a   class="course-link">Learn {{course.name}}</a>
+              <p>{{course.category}}</p>
+              
+                <ion-row>
+                  <ion-col size ="8"> 
+                    <ion-icon color="warning" name="star"></ion-icon>
+                    <ion-icon color="warning" name="star"></ion-icon>
+                    <ion-icon color="warning" name="star"></ion-icon>
+                    <ion-icon color="warning" name="star-outline"></ion-icon>
+                    <ion-icon color="warning" name="star-outline"></ion-icon>
+                  </ion-col>
+          
+                      <ion-col    size ="4" class="ion-align-self-end">
+                      <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                    </ion-col>
+                </ion-row>
+                
+                
+            </mat-card-content>
+            
+          </mat-card>
+        </div>
+
+      <ion-item-divider class="category">
+        <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;"></h2>
+      </ion-item-divider>
+
+      </section>
+    </section>
+
+  </ion-content>
+
+ 

@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar style="line-height: 40px;">
+    <ion-title>Instructor Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!isEdit;" color="ourtheme" (click)="this.isEdit = true" size="large" shape="round"><ion-icon size="large" name="create-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<mat-tab-group *ngIf ="!loggedIn"   mat-align-tabs="center" mat-stretch-tabs selectedIndex="0">
+  <mat-tab>
+    <ng-template mat-tab-label >
+      <ion-icon name="log-in" size="large" class="ion-margin"></ion-icon>
+       <b >SIGN IN</b>
+    </ng-template>
+      <app-login ></app-login>
+  </mat-tab>
+  <mat-tab> 
+    <ng-template mat-tab-label>
+      <ion-icon name="person-add" size="large" class="ion-margin"></ion-icon>
+       <b>SIGN UP</b>
+    </ng-template>
+    <app-signup></app-signup>
+  </mat-tab>
+</mat-tab-group>
+
+<div  *ngIf ="loggedIn" >
+  <div style="background-color: white;">
+
+    <ion-grid style="margin-bottom: 10px;">
+      <ion-row>
+  
+        <ion-col size="12">
+  
+          <ion-row >
+  
+            <ion-col size="2" style="text-align: center;">
+              <ion-avatar style="height: 100px; width: 100px; margin: auto;">
+                <img src="../../../assets/img/profile/pp.jpg">
+              </ion-avatar>
+            </ion-col>
+  
+            <ion-col size="8" >
+              <ion-label style="font-size: x-large;" size="large"> {{studentAccount.getName()}} {{studentAccount.getSurname()}} </ion-label> <br>
+              <ion-label style="font-size: large;" size="medium"> {{studentAccount.getEmail()}}  </ion-label> <br>
+           
+              
+              <ion-label>Software developer</ion-label> <br>
+              <a href="">
+                <ion-icon size="small" name="logo-facebook" color="primary" class="social"></ion-icon>
+              </a>
+              
+                <a href="">
+                  <ion-icon size="small" name="logo-google" color="danger" class="social"></ion-icon>
+                </a>
+  
+                <a href="">
+                  <ion-icon size="small" name="logo-linkedin" color="secondaary" class="social"></ion-icon>
+                </a>
+              
+            </ion-col>
+          </ion-row>
+          
+  
+          <div>
+              <ion-row>
+  
+                <ion-col size="6">
+                  <ion-card button style="text-align: center;" color="primary" >
+                    <ion-card-header>
+                      
+                      <ion-card-title class="card-title">Enrolled Students</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <h1>{{students.length}}</h1>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+  
+                <ion-col size="6">
+                  <ion-card button style="text-align: center;" color="secondary" class="card-title" >
+                    <ion-card-header>
+                      <ion-card-title>Courses</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <h1>{{courses.length}}</h1>
+                    </ion-card-content>
+  
+                  </ion-card>
+                </ion-col>
+  
+        </ion-row>
+  
+              
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

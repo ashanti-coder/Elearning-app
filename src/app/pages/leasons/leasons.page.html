@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-toolbar>
+        <h2 slot="end"  style="margin-right: 7px;">{{course_name}}</h2>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<div *ngIf="!isLessonAvailable" style="height: 400px;">
+    <h2 style="color: gray; text-align: center; margin-top: 200px;">No lessons uploaded for this course</h2>
+</div>
+
+    
+<div style="margin-left: 7px; margin-bottom: 90px;" class="ion-margin" *ngIf="isLessonAvailable">
+    <ion-grid *ngIf="lessonList.length > 0"> 
+        <ion-row>
+        <ion-col size="12">  
+            <video [src]="videoURL" controls loop style="width: 100%; margin: auto;" autoplay *ngIf="lessonList.length > 0"  >
+                
+            </video>
+
+         </ion-col> 
+        </ion-row>
+
+    </ion-grid>
+
+
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Course Contents">
+            <ion-list>
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="play(lesson.videoURL, lesson.id)">
+                    <ion-icon *ngIf="videoURL != lesson.videoURL" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == lesson.videoURL" name="pause-circle-outline" color="warning"></ion-icon>
+                    <ion-label>
+                        {{lesson.name}}
+                    </ion-label>
+                </ion-item>
+                
+
+                
+            </ion-list>
+              
+
+        </mat-tab>
+        <mat-tab label="Notes">
+           
+            <ion-list>
+                <ion-item *ngFor="let lesson of lessonList"  button type="button">
+                   
+                    <ion-label *ngIf="lesson.docURL">
+                       <a href="{{lesson.docURL}}" style="text-decoration: none; color: black;" target="_blank">{{lesson.name}} study material (pdf)</a>
+                    </ion-label>
+                </ion-item>
+                
+
+                
+            </ion-list>
+        </mat-tab>
+        <mat-tab label="Quizzes">
+            <ion-list>
+                <ion-list-header>
+                   <ion-label >Quizzes completed: {{nquizwritten}} of {{lessonList.length}}</ion-label>
+                </ion-list-header>
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="navigateToQuiz(lesson.id)">
+                   
+                    <ion-label>
+                       {{lesson.name}}
+                    </ion-label>
+
+                    <ion-icon size="large" color="success" *ngIf="lesson.isWritten" name="checkmark-done-circle-outline" slot="end"></ion-icon>
+                    
+                </ion-item>
+                
+
+                
+            </ion-list>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
+  
+ 

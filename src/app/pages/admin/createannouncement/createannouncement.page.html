@@ -1,0 +1,34 @@
+<ion-header style="margin-top: 55px;">
+  <ion-toolbar>
+    <ion-title>Post Announcement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Subject:</ion-label>
+    <ion-input #subject></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Announcement</ion-label>
+    <ion-textarea #message rows="6" placeholder="type announcement here"></ion-textarea>
+  </ion-item>
+
+  <ion-radio-group #category>
+
+    <ion-item>
+      <ion-label>Instructors</ion-label>
+      <ion-radio slot="start" value="i"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Students</ion-label>
+      <ion-radio slot="start" value="s"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  
+  <ion-button shape="round" (click)="post(subject.value ,message.value, category.value)">Post</ion-button>
+
+</ion-content>

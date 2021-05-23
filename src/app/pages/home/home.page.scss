@@ -1,0 +1,55 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ .img{
+ // border-radius: 18px 18px 0px 0px;
+  height: 100px;
+  width: 100%;
+}
+
+.welcome{
+  color: white; 
+  margin-top: 25%; 
+  font-weight: 500; 
+  font-size: 250%;
+  letter-spacing: 1px;
+  line-height: normal;
+  padding: 10px;
+  animation-name: headerslideanimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  
+  
+}
+
+@keyframes headerslideanimation{
+  from{ font-size: 100%;}
+  to{ font-size: 250%;}
+}
+
+
